@@ -1,7 +1,7 @@
 const Blog = () => {
     return (
     <section>
-        <h2>All Blogs</h2>
+        <h2>Blog</h2>
         <p>This is a pargraph in Blog Component</p>
     </section>
     );
