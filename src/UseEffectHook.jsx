@@ -8,9 +8,13 @@ const UseEffectHook = () => {
 
     function handleClick() {
         setName('Rohan Sharma');
-        setAge(21);
+        // setAge(21);
         setCounter(counter + 1);
     }
+
+    useEffect( () =>  {
+        console.log('UseEffect Hook');
+    } , [counter]);
 
     return (
         <section>
