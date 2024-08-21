@@ -6,9 +6,9 @@ import { useState, useEffect } from 'react';
 
 function BlogListApp() {
 
-  const [blogs, setBlogs] = useState([
-    { title: "Blog Title from component", content: "This is blog component...", author: "Kube Dude", id: 1 }
-  ]);
+  const [blogs, setBlogs] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // 1. Initialize the blogs state with null, as data to come from DB
   // 2. Fetch data from API using useEffect
@@ -19,13 +19,44 @@ function BlogListApp() {
   // 7. Error Handling: Handle 404 errors
   // HW: 8. Add a button to fetch data from API
 
+  const url = "http://localhost:3099/blogs";
+  useEffect(() => {
+    setTimeout(() => {
+      fetch(url)
+        .then((data) => {
+          console.log("fetch is successful");
+          // console.log(data);
+          if(data.ok){
+            // fetch is success, and data is fetched
+            return data.json();
+          }
+          else{
+            // fetch is success but data is not fetched
+            throw Error("Data is not fetched from the API");
+          }
+        })
+        .then((blogs) => {
+          console.log("json parsin is successful");
+          setBlogs(blogs);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err.message);
+          setError(err);
+          setLoading(false);
+        })
+    }, 2000);
+  }, []);
+
   return (
     <div className="App">
       <Navbar />
-      <section>
+      {/* <section>
         This is a section for BlogListApp.
-      </section>
-      {<BlogListDb blogs={blogs} title={"All blogs from API"} />}
+      </section> */}
+      {loading && <section>The page is loading</section>}
+      {error && <section>{error.message}</section>}
+      {blogs && <BlogListDb blogs={blogs} title={"All blogs from API"} />}
 
       <Footer />
     </div>
@@ -52,7 +83,7 @@ export default BlogListApp;
 
 /*
 
-useState(() => {
+useEffect(() => {
     setTimeout(() => {
       fetch(endPoint)
         .then(res => {
