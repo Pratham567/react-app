@@ -6,6 +6,7 @@ import StateHook from './StateHook';
 import UseEffectHook from './UseEffectHook';
 import BlogsDB from './BlogsDB';
 import BlogList from './BlogList';
+import BlogListDb from './bloglist/BlogListDb';
 
 import { useState, useEffect } from 'react';
 
@@ -27,6 +28,7 @@ function App() {
     const newArray = blogs.filter( blog => blog.id !== id);
     setBlogs(newArray);
   }
+  
 
   return (
     <div className="App">
@@ -36,10 +38,11 @@ function App() {
       {/* <StateHook /> */}
       {/* <UseEffectHook /> */}
 
-      <BlogList blogs={blogs} deleteBlogForId={deleteBlogForId} title={"Even Blogs"}/>
-      <BlogList blogs={blogs} deleteBlogForId={deleteBlogForId} title={"Odd Blogs"}/>
-      
       {/* Q: Send blogs only when id is even */}
+      {/* <BlogList blogs={blogs} deleteBlogForId={deleteBlogForId} title={"Even Blogs"}/> */}
+      {/* <BlogList blogs={blogs} deleteBlogForId={deleteBlogForId} title={"Odd Blogs"}/> */}
+      
+      <BlogListDb blogs={blogs} title={"All blogs from API"} />
 
 
 

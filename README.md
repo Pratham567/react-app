@@ -73,3 +73,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 `npx json-server --watch data/data.json --port 3099`
 
+npm install react-router-dom
+

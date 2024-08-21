@@ -4,7 +4,7 @@ import BlogListDb from './BlogListDb';
 
 import { useState, useEffect } from 'react';
 
-function NewApp() {
+function BlogListApp() {
 
   const [blogs, setBlogs] = useState([
     { title: "Blog Title from component", content: "This is blog component...", author: "Kube Dude", id: 1 }
@@ -22,6 +22,9 @@ function NewApp() {
   return (
     <div className="App">
       <Navbar />
+      <section>
+        This is a section for BlogListApp.
+      </section>
       {<BlogListDb blogs={blogs} title={"All blogs from API"} />}
 
       <Footer />
@@ -29,7 +32,7 @@ function NewApp() {
   );
 }
 
-export default NewApp;
+export default BlogListApp;
 
 
 
