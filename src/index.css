@@ -534,3 +534,7 @@ button:hover {
   margin-bottom: 15px;
   text-align: center;
 }
+
+a {
+  text-decoration: none;
+}

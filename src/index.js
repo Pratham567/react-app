@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import AppRouter from './routes/AppRouter';
-
-import BlogListApp from './bloglist/BlogListApp';
+import BlogsApp from './blogs/BlogsApp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    // <App />
-    // <BlogListApp />
-    <AppRouter />
+  //   {/* <App />
+  //   <BlogListApp />
+  //   <AppRouter /> */}
+  //   {/* <BlogsApp /> */}
   // </React.StrictMode>
+    <BlogsApp />
 );
