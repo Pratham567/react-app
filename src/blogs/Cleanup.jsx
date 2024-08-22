@@ -10,7 +10,12 @@ const Cleanup = () => {
 
     useEffect(() => {
         console.log("cleanup useEffect is called");
-    });
+
+
+        return () => {
+            console.log("De-rendering the cleanup component");
+        }
+    }, [count]);
 
     return (
         <section>

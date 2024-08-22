@@ -7,6 +7,9 @@
 console.log("Start");
 const url = "http://localhost:3099/blogs";
 
+const abortController = new AbortController();
+const signal = abortController.signal;
+
 const fetchData = () => {
     setTimeout(() => {
         fetch(url, { signal })
@@ -24,6 +27,8 @@ const fetchData = () => {
             })
     }, 1000);
 }
+fetchData();
+abortController.abort();
 console.log("End");
 
 

@@ -1,4 +1,5 @@
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import useFetch from './useFetch';
 
 const BlogDetail = () => {
 
@@ -10,13 +11,20 @@ const BlogDetail = () => {
     // 4. Fetch the blog data using custom hook useFetch
     // 5. Display the blog data in the BlogDetail component
 
+    const url = "http://localhost:3099/blogs/" + id;
+    const { data, loading, error } = useFetch(url);
+
     return (
         <section>
-            <h2>
-                Blog Detail Page with id
-            </h2>
+            {loading && <p>The page is loading</p>}
+            {error && <p>{error.message}</p>}
+            {data && <div>
+                <h4>{data.title}</h4>
+                <em>Written by: {data.author}</em>
+                <p>{data.content}</p>
+            </div>}
         </section>
-      );
+    );
 }
- 
+
 export default BlogDetail;
