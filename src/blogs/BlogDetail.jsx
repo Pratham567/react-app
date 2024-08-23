@@ -11,6 +11,14 @@ const BlogDetail = () => {
     // 4. Fetch the blog data using custom hook useFetch
     // 5. Display the blog data in the BlogDetail component
 
+    // // Add support for deleting a blog
+    // 6. Create a delete button
+    // 7. Add an onClick event to the delete button
+    // 8. Create a handleDelete function to handle the delete event
+    // 9. Using fetch, make a DELETE request to the API with the blog id
+    // 10. Log a message to the console when the blog is deleted
+    // 11. Navigate back to the blogs page after the blog is deleted
+
     const url = "http://localhost:3099/blogs/" + id;
     const { data, loading, error } = useFetch(url);
 
@@ -28,3 +36,51 @@ const BlogDetail = () => {
 }
 
 export default BlogDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+import { useNavigate } from 'react-router-dom';
+    
+const navigate = useNavigate();
+
+
+const handleDelete = () => {
+    fetch(url, {
+        method: 'DELETE'
+    }).then(() => {
+        console.log('Blog deleted');
+        navigate("/blogs");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+}
+
+
+<button onClick={handleDelete}>Delete</button>
+
+*/
