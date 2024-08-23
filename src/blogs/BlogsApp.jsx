@@ -5,6 +5,7 @@ import AllBlogs from './AllBlogs';
 import About from './About';
 import Cleanup from './Cleanup';
 import BlogDetail from './BlogDetail';
+import CreateBlog from './CreateBlog';
 
 function BlogsApp() {
 
@@ -19,6 +20,7 @@ function BlogsApp() {
           <Route path="/about" element={<About />} />
           <Route path="/cleanup" element={<Cleanup />} />
           <Route path="/contact" element={<section><p>This is a contact page</p></section>} />
+          <Route path="/newblog" element={<CreateBlog />} />
         </Routes>
       </Router>
       <Footer />
