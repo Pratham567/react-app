@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const CreateBlog = () => {
 
     // 1. Create a new blog form: title, content, sector, author
@@ -13,7 +16,7 @@ const CreateBlog = () => {
     // 8. Create a blog object with the form field states
     // 9. Log the blog object to the console
     // 10 Make a POST request to the API with the blog object
-    // 10. Clear the form after submission
+    // 10.1 Clear the form after submission
 
     // 11: Add timeout to the form submission fetch API to simulate a slow network
     // 12. create a pending state for the submit button
@@ -21,27 +24,84 @@ const CreateBlog = () => {
     // 14.change the state of the button to active when the form is submitted
     // HW: add a spinner to the button when the state is pending
 
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [sector, setSector] = useState('Health');
+    const [author, setAuthor] = useState('');
+    const [pending, setPending] = useState(false);
+
+    const navigate = useNavigate();
+
+    const postUrl = 'http://localhost:3099/blogs';
+
+    function handleSubmit(e) {
+        // 6. Create a handleSubmit function to handle the form submission
+        // 7. Prevent the default form submission
+        e.preventDefault();
+        setPending(true);
+        // 8. Create a blog object with the form field states
+        const blog = { title, content, sector, author };
+        // 9. Log the blog object to the console
+        console.log(blog);
+        // 10 Make a POST request to the API with the blog object
+
+        setTimeout(() => {
+            fetch(postUrl, {
+                'method': 'POST',
+                'headers': { 'Content-Type': 'application/json' },
+                'body': JSON.stringify(blog)
+            })
+            .then((res) => {
+                console.log('New Blog added');
+                setPending(false);
+                // navigate('/blogs');
+                navigate(-1);
+            })
+            .catch((err) => {
+                console.log('Error: ', err);
+                setPending(false);
+            });
+        }, 5000);
+
+
+        // 11. Clear the form after submission
+    }
+
     return (
         <section>
             <h2>
                 Create a new Blog
             </h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Title</label>
                 <input
                     type="text"
                     required
+                    value={title}
+                    placeholder='Enter your blog title here'
+                    onChange={(e) => {
+                        setTitle(e.target.value);
+                    }}
                 />
                 <br /> <br />
                 <label>Content</label>
                 <textarea
                     required
+                    value={content}
+                    placeholder='Enter your blog content here'
+                    onChange={(e) => {
+                        setContent(e.target.value);
+                    }}
                 >
                 </textarea>
                 <br /> <br />
                 <label >Sector</label>
                 <select
                     required
+                    value={sector}
+                    onChange={(e) => {
+                        setSector(e.target.value);
+                    }}
                 >
                     <option value="Health">Health</option>
                     <option value="Finance">Finance</option>
@@ -51,10 +111,22 @@ const CreateBlog = () => {
                 <input
                     type="text"
                     required
+                    value={author}
+                    placeholder='Enter the author name'
+                    onChange={(e) => {
+                        setAuthor(e.target.value);
+                    }}
                 />
                 <br /> <br />
-                {<button>Add Blog</button>}
+                { !pending && <button>Add Blog</button>}
+                {pending &&  <button disabled> Saving post please wait... </button>}
             </form>
+
+            <h2>Input for form</h2>
+            <p>Title: {title}</p>
+            <p>Content: {content}</p>
+            <p>Sector: {sector}</p>
+            <p>Author: {author}</p>
         </section>
     );
 }
