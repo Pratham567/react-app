@@ -13,6 +13,6 @@ root.render(
   //   {/* <BlogsApp /> */}
   // </React.StrictMode>
     // <BlogsApp />
-    <PropsDrillApp />
-    // <ContextApp />
+    // <PropsDrillApp />
+    <ContextApp />
 );
