@@ -6,7 +6,7 @@ const Blogs = ({ blogs, title }) => {
         <section>
             <h1>{title}</h1>
             {blogs.map(blog => {
-                const url = `/blogs/${blog.id}`;
+                const url = `/blogs/${blog._id.toString()}`;
                 return (
                     <div key={blog.id}>
                         <Link to={url}>

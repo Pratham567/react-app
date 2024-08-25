@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import BlogsApp from './blogs/BlogsApp';
+import PropsDrillApp from './propsdrill/PropsDrillApp';
+import ContextApp from './contextapp/ContextApp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,5 +12,7 @@ root.render(
   //   <AppRouter /> */}
   //   {/* <BlogsApp /> */}
   // </React.StrictMode>
-    <BlogsApp />
+    // <BlogsApp />
+    <PropsDrillApp />
+    // <ContextApp />
 );
