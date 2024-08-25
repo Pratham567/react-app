@@ -1,6 +1,6 @@
 import Component1 from "./Component1";
 import Component99 from "./Component99";
-import { CounterContextProvider } from "./contexts/CounterContext";
+// import { CounterContextProvider } from "./contexts/CounterContext";
 
 
 // 1. Create a CounterContext template in the contexts folder

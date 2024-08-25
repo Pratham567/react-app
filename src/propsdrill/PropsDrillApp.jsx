@@ -1,5 +1,6 @@
 import ComponentDrill1 from "./ComponentDrill1";
 import { useState } from "react";
+import ComponentDrill99 from "./ComponentDrill99";
 
 // 1. Render a ComponentDrill1 component and pass counter and setCounter as props
 // 2. Inside the ComponentDrill1 component, render ComponentDrill2 and pass counter and setCounter as props
@@ -19,7 +20,10 @@ const PropsDrillApp = () => {
                 <p>This is a paragraph</p>
                 <p>Counter: {counter}</p>
             </section>
-            <ComponentDrill1 counter={counter} setCounter={setCounter} />
+            <ComponentDrill1 counter={counter} setCounter={setCounter} >
+                <ComponentDrill99 /> 
+            </ComponentDrill1>
+
 
         </>
     );
